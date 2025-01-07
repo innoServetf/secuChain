@@ -1,0 +1,17 @@
+server:
+  port: 8080
+  mode: debug
+
+database:
+  host: localhost
+  port: 3306
+  user: root
+  password: your_password
+  dbname: blocksbom
+
+fabric:
+  network_config: "configs/connection-org1.yaml"
+  channel_name: "mychannel"
+  chaincode_name: "sbom"
+  org_name: "Org1"
+  user_name: "Admin" 
