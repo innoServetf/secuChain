@@ -1,42 +1,39 @@
 package api
 
 import (
+	"github.com/InnoServe/blockSBOM/internal/api/handlers"
+	"github.com/InnoServe/blockSBOM/internal/api/middleware"
 	"github.com/cloudwego/hertz/pkg/app/server"
-	"github.com/yourusername/blockSBOM/internal/api/handlers"
-	"github.com/yourusername/blockSBOM/internal/api/middleware"
 )
 
 func RegisterRoutes(h *server.Hertz) {
 	// 全局中间件
-	h.Use(middleware.Cors())
-	h.Use(middleware.RequestID())
+	h.Use(middleware.Recovery())
 	h.Use(middleware.Logger())
+	h.Use(middleware.Cors())
 
-	// API 路由组
-	v1 := h.Group("/api/v1")
+	// 用户认证相关路由
+	userHandler := handlers.NewUserHandler()
+	auth := h.Group("/api/v1/auth")
 	{
-		// SBOM 相关路由
-		sbom := v1.Group("/sbom")
-		{
-			sbom.POST("", handlers.CreateSBOM)
-			sbom.GET("/:id", handlers.GetSBOM)
-			sbom.PUT("/:id", handlers.UpdateSBOM)
-			sbom.GET("", handlers.ListSBOMs)
-		}
+		auth.POST("/register", userHandler.Register)
+		auth.POST("/login", userHandler.Login)
+		auth.POST("/verify-email", userHandler.VerifyEmail)
+		auth.POST("/reset-password", userHandler.ResetPassword)
+	}
 
-		// DID 相关路由
-		did := v1.Group("/did")
-		{
-			did.POST("", handlers.CreateDID)
-			did.GET("/:id", handlers.GetDID)
-			did.PUT("/:id", handlers.UpdateDID)
-		}
+	// 需要认证的路由
+	api := h.Group("/api/v1")
+	api.Use(middleware.AuthMiddleware())
+	{
+		// 用户相关
+		api.GET("/user/info", userHandler.GetUserInfo)
 
-		// 漏洞扫描相关路由
-		vuln := v1.Group("/vulnerability")
+		// 管理员路由
+		admin := api.Group("/admin")
+		admin.Use(middleware.RoleAuth("admin"))
 		{
-			vuln.POST("/scan", handlers.ScanVulnerability)
-			vuln.GET("/report/:id", handlers.GetVulnerabilityReport)
+			// TODO: 添加管理员路由
 		}
 	}
 }

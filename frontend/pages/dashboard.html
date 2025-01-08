@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockSBOM - 仪表板</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">BlockSBOM</div>
+            <div class="nav-menu">
+                <a href="#" class="nav-item active">仪表板</a>
+                <a href="sbom-list.html" class="nav-item">SBOM管理</a>
+                <a href="vulnerability.html" class="nav-item">漏洞扫描</a>
+            </div>
+            <div class="nav-user">
+                <span id="userInfo"></span>
+                <button id="logoutBtn" class="btn btn-text">退出</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>欢迎回来</h1>
+            <p id="organizationInfo"></p>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>SBOM总数</h3>
+                <div class="stat-number" id="sbomCount">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>待处理漏洞</h3>
+                <div class="stat-number" id="vulnerabilityCount">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>组件总数</h3>
+                <div class="stat-number" id="componentCount">0</div>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="content-section">
+                <h2>最近的SBOM</h2>
+                <div class="table-container">
+                    <table id="recentSbomTable">
+                        <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>版本</th>
+                                <th>创建时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 动态填充 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html> 
