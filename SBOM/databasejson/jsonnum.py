@@ -1,7 +1,9 @@
+from datetime import datetime
 import json
 
-# 指定 JSON 文件路径
-file_path = 'CVE-2024.json'
+year = datetime.now().year
+# 指定 JSON 文件路径，使用 f-string 格式化字符串
+file_path = f"CVE-{year}.json"
 
 try:
     # 打开并读取 JSON 文件
