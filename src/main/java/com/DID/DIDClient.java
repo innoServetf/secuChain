@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.UUID;
 
+//
 public class DIDClient {
     public String generateDID() {
         String specificId = UUID.randomUUID().toString();
