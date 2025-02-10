@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+
+  <groupId>com.kuang</groupId>
+  <artifactId>example1</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+
+  <name>example1</name>
+  <url>http://maven.apache.org</url>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <repositories>
+    <repository>
+      <id>hyperledger-release</id>
+      <url>https://hyperledger.jfrog.io/artifactory/release</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hyperledger.fabric</groupId>
+      <artifactId>fabric-gateway-java</artifactId>
+      <version>2.2.9</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.9</version>
+    </dependency>
+    <dependency>
+    <groupId>com.github.iarellano</groupId>
+    <artifactId>org.everit.json.schema</artifactId>
+    <version>1.10.0</version>
+  </dependency>
+
+    <dependency>
+      <groupId>org.hyperledger.fabric-chaincode-java</groupId>
+      <artifactId>fabric-chaincode-shim</artifactId>
+      <version>2.5.5</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.github.everit-org.json-schema</groupId>
+          <artifactId>org.everit.json.schema</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
+
+</project>
