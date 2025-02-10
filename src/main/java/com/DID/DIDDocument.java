@@ -1,6 +1,6 @@
 package com.DID;
 
-//
+///
 public  class DIDDocument {
     public String id;
     public String publicKey;

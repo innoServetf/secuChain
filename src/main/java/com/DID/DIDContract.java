@@ -9,7 +9,7 @@ import org.hyperledger.fabric.contract.annotation.Transaction;
 import java.security.*;
 import java.time.Instant;
 
-//
+///
 @Contract
 public class DIDContract implements ContractInterface {
 
