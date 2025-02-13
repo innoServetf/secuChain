@@ -8,6 +8,8 @@ blockSBOM 是一个创新的基于区块链的解决方案,旨在通过先进的
 
 ## 项目架构
 
+![image-20250213135429718](C:\Users\Lyan\AppData\Roaming\Typora\typora-user-images\image-20250213135429718.png)
+
 ```
 blockSBOM/
 ├── cmd/
